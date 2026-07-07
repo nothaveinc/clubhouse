@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="クラブハウス — 福岡県福津市の、気軽に立ち寄れる部室のようなカフェ。"
+    />
+    <title>CLUBHOUSE | 福岡県福津市のカフェ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header" id="top">
+      <nav class="nav" aria-label="メインナビゲーション">
+        <a href="#top" class="nav__logo">CLUB<span>.</span>HOUSE</a>
+        <ul class="nav__list" id="navList" role="list">
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#menu" class="nav__link">Menu</a></li>
+          <li><a href="#instagram" class="nav__link">Instagram</a></li>
+          <li><a href="#shop" class="nav__link">Shop</a></li>
+          <li><a href="#access" class="nav__link">Access</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+        <button
+          class="nav__hamburger"
+          id="hamburger"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+          aria-controls="navList"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="hero" aria-label="Hero">
+        <div class="hero__bg">
+          <img
+            src="./clubhouse photo/616656052502397452.jpg"
+            alt="クラブハウスの明るく温かみある店内"
+            class="hero__img"
+          />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__content">
+          <p class="hero__eyebrow">Neighborhood Café · Fukutsu, Fukuoka</p>
+          <h1 class="hero__title">
+            いつもの毎日に、<br />もうひとつの居場所を。<br />
+            <em>CLUB HOUSE</em>
+          </h1>
+          <p class="hero__sub">Your everyday clubhouse.</p>
+          <div class="hero__ctas">
+            <a href="#menu" class="hero__btn hero__btn--fill">Our Menu</a>
+            <a href="#about" class="hero__btn">Our Story</a>
+          </div>
+        </div>
+        <a href="#about" class="hero__scroll" aria-label="下にスクロール">
+          <span class="hero__scroll-line"></span>
+          <span class="hero__scroll-text">Scroll</span>
+        </a>
+      </section>
+
+      <!-- CONCEPT BAR -->
+      <div class="concept-bar">
+        <div class="container concept-bar__inner">
+          <div class="concept-bar__item">
+            <i class="fa-regular fa-clock" aria-hidden="true"></i>
+            <span>8:00 – 19:00</span>
+          </div>
+          <div class="concept-bar__divider" aria-hidden="true"></div>
+          <div class="concept-bar__item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>福岡県福津市</span>
+          </div>
+          <div class="concept-bar__divider" aria-hidden="true"></div>
+          <div class="concept-bar__item">
+            <i class="fa-regular fa-calendar-xmark" aria-hidden="true"></i>
+            <span>火曜定休</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <section class="about section" id="about" aria-labelledby="about-h">
+        <div class="container">
+          <div class="about__inner">
+            <div class="about__text fade-in">
+              <span class="label">About Us</span>
+              <h2 class="heading" id="about-h">
+                部室みたいな、<br />居場所がある。
+              </h2>
+              <span class="divider"></span>
+              <p>クラブハウスは、福岡県福津市の小さなカフェです。</p>
+              <p>
+                放課後の部室のように、仕事終わりに、買い物帰りに——ふらっと立ち寄れる「自分の居場所」を作りたくて、この店を始めました。肩の力を抜いて、好きなだけいてください。
+              </p>
+              <p>
+                一杯のコーヒーが、あなたの今日をほんの少し豊かにできたら、それが私たちの喜びです。
+              </p>
+              <blockquote class="about__quote">
+                "A great café feels like home — you just forget to leave."
+              </blockquote>
+            </div>
+            <div class="about__img-wrap fade-in">
+              <div class="about__img-frame">
+                <img
+                  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=600&fit=crop&auto=format"
+                  alt="バリスタがコーヒーを丁寧に淹れている様子"
+                  class="about__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="about__badge">
+                <strong>Since</strong>
+                <span>2020<br />Fukutsu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- THREE PILLARS -->
+      <section
+        class="pillars section section--yellow"
+        aria-label="クラブハウスのこだわり"
+      >
+        <div class="container">
+          <div class="section-header fade-in">
+            <span class="label">Why Clubhouse</span>
+            <h2 class="heading">3つのこだわり</h2>
+          </div>
+          <div class="pillars__grid">
+            <div class="pillar fade-in">
+              <div class="pillar__icon">
+                <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+              </div>
+              <h3 class="pillar__title">丁寧なコーヒー</h3>
+              <p class="pillar__desc">
+                豆の個性を引き出すために、焙煎・抽出の一つひとつを手を抜かずに。
+              </p>
+            </div>
+            <div class="pillar fade-in">
+              <div class="pillar__icon">
+                <i class="fa-solid fa-couch" aria-hidden="true"></i>
+              </div>
+              <h3 class="pillar__title">くつろげる空間</h3>
+              <p class="pillar__desc">
+                ひとりでも、誰かとでも。部室のような気取らない雰囲気の中でゆっくりどうぞ。
+              </p>
+            </div>
+            <div class="pillar fade-in">
+              <div class="pillar__icon">
+                <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+              </div>
+              <h3 class="pillar__title">地元との繋がり</h3>
+              <p class="pillar__desc">
+                津屋崎・福津の農家さんや生産者さんの素材を積極的に使用しています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section class="menu section" id="menu" aria-labelledby="menu-h">
+        <div class="container">
+          <div class="section-header fade-in">
+            <span class="label">Our Menu</span>
+            <h2 class="heading" id="menu-h">メニュー</h2>
+            <p class="desc">毎日通いたくなる、ほっとする一杯と一皿。</p>
+          </div>
+          <div class="menu__grid">
+            <article class="menu-card fade-in">
+              <div class="menu-card__img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=400&h=300&fit=crop&auto=format"
+                  alt="アメリカーノ"
+                  class="menu-card__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__name">Americano</h3>
+                <p class="menu-card__name-ja">アメリカーノ</p>
+                <p class="menu-card__desc">
+                  エスプレッソをお湯で割った、すっきりとした黒いコーヒー。豆の風味がストレートに楽しめる一杯。
+                </p>
+                <p class="menu-card__price">¥ 520</p>
+              </div>
+            </article>
+            <article class="menu-card fade-in">
+              <div class="menu-card__img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400&h=300&fit=crop&auto=format"
+                  alt="カフェラテ"
+                  class="menu-card__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__name">Café Latte</h3>
+                <p class="menu-card__name-ja">カフェラテ</p>
+                <p class="menu-card__desc">
+                  まろやかなスチームミルクとエスプレッソが溶け合う、やさしくて飲みやすい一杯。
+                </p>
+                <p class="menu-card__price">¥ 650</p>
+              </div>
+            </article>
+            <article class="menu-card fade-in">
+              <div class="menu-card__img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop&auto=format"
+                  alt="カレー"
+                  class="menu-card__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__name">Curry</h3>
+                <p class="menu-card__name-ja">カレー</p>
+                <p class="menu-card__desc">
+                  地元の野菜をたっぷり使ったスパイス薫るクラブハウスカレー。ランチタイムのおすすめ。
+                </p>
+                <p class="menu-card__price">¥ 980</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSTAGRAM -->
+      <section
+        class="section section--yellow insta-section"
+        id="instagram"
+        aria-labelledby="insta-h"
+      >
+        <div class="container">
+          <div class="section-header fade-in">
+            <span class="label"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</span>
+            <h2 class="heading" id="insta-h">インスタグラム</h2>
+            <p class="desc">最新の投稿はInstagramでチェック。</p>
+          </div>
+          <div class="insta-feed" role="list" aria-label="Instagram最新投稿">
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年6月8日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656046848737707.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 84</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 7</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">今日も丁寧に一杯ずつ。豆の香りに癒される朝です☕ #clubhouse #福津カフェ #コーヒー</p>
+              <time class="insta-post__date" datetime="2026-06-08">2026.06.08</time>
+            </a>
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年6月6日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656048996745732.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 121</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 12</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">今週の季節のケーキは津屋崎いちごのタルトです🍓 数量限定なのでお早めに！</p>
+              <time class="insta-post__date" datetime="2026-06-06">2026.06.06</time>
+            </a>
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年6月4日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656049415389339.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 96</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 9</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">ランチのクラブハウスカレー、好評です🍛 地元野菜がたっぷり入ってます。#福津グルメ</p>
+              <time class="insta-post__date" datetime="2026-06-04">2026.06.04</time>
+            </a>
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年6月2日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656049516314716.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 73</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 4</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">梅雨の晴れ間、午後の光が気持ちいい☀️ ふらっと立ち寄ってください。#部室みたいなカフェ</p>
+              <time class="insta-post__date" datetime="2026-06-02">2026.06.02</time>
+            </a>
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年5月30日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656052066451839.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 58</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 3</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">シンプルに、アメリカーノ一杯。すっきりとした苦みが好きな方にぜひ☕ #アメリカーノ</p>
+              <time class="insta-post__date" datetime="2026-05-30">2026.05.30</time>
+            </a>
+
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="insta-post fade-in" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="2026年5月27日のInstagram投稿を見る">
+              <div class="insta-post__img-wrap">
+                <img src="./clubhouse%20photo/616656052519436381.jpg" alt="クラブハウスのInstagram投稿" class="insta-post__img" loading="lazy" />
+                <div class="insta-post__overlay" aria-hidden="true">
+                  <span class="insta-post__stat"><i class="fa-solid fa-heart"></i> 110</span>
+                  <span class="insta-post__stat"><i class="fa-regular fa-comment"></i> 15</span>
+                </div>
+              </div>
+              <p class="insta-post__caption">窓際の席、お気に入りの場所です🌿 本を持ってゆっくり過ごしませんか。#福津市 #クラブハウス</p>
+              <time class="insta-post__date" datetime="2026-05-27">2026.05.27</time>
+            </a>
+
+          </div>
+          <div class="insta-cta fade-in">
+            <a href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu" class="btn btn--filled" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i> &nbsp;インスタグラムをフォロー
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHOP -->
+      <section class="section" id="shop" aria-labelledby="shop-h">
+        <div class="container">
+          <div class="shop__inner">
+            <div class="shop__image fade-in">
+              <img
+                src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&h=600&fit=crop&auto=format"
+                alt="クラブハウスの明るい店内"
+                class="shop__img"
+                loading="lazy"
+              />
+            </div>
+            <div class="shop__info fade-in">
+              <span class="label">Shop Info</span>
+              <h2 class="heading" id="shop-h">店舗情報</h2>
+              <span class="divider"></span>
+              <dl class="shop__details">
+                <div class="shop__row">
+                  <dt class="shop__dt">店名</dt>
+                  <dd class="shop__dd">クラブハウス（CLUBHOUSE）</dd>
+                </div>
+                <div class="shop__row">
+                  <dt class="shop__dt">住所</dt>
+                  <dd class="shop__dd">
+                    〒811-3231<br />福岡県福津市中央1-2-3
+                  </dd>
+                </div>
+                <div class="shop__row">
+                  <dt class="shop__dt">営業時間</dt>
+                  <dd class="shop__dd">8:00 – 19:00</dd>
+                </div>
+                <div class="shop__row">
+                  <dt class="shop__dt">定休日</dt>
+                  <dd class="shop__dd">火曜日</dd>
+                </div>
+                <div class="shop__row">
+                  <dt class="shop__dt">電話</dt>
+                  <dd class="shop__dd">
+                    <a href="tel:0940123456" class="shop__tel">0940-12-3456</a>
+                  </dd>
+                </div>
+                <div class="shop__row">
+                  <dt class="shop__dt">駐車場</dt>
+                  <dd class="shop__dd">あり（3台）</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCESS -->
+      <section
+        class="section section--yellow"
+        id="access"
+        aria-labelledby="access-h"
+      >
+        <div class="container">
+          <div class="section-header fade-in">
+            <span class="label">Access</span>
+            <h2 class="heading" id="access-h">アクセス</h2>
+            <p class="desc">JR鹿児島本線「福間駅」より徒歩8分</p>
+          </div>
+          <div class="access__map fade-in">
+            <iframe
+              src="https://maps.google.com/maps?q=33.7780,130.4920&z=15&output=embed"
+              width="100%"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="クラブハウス アクセスマップ"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact" aria-labelledby="contact-h">
+        <div class="container">
+          <div class="section-header fade-in">
+            <span class="label">Contact</span>
+            <h2 class="heading" id="contact-h">お問い合わせ</h2>
+            <p class="desc">ご質問・ご予約はお気軽にどうぞ。</p>
+          </div>
+          <form
+            class="contact__form fade-in"
+            id="contactForm"
+            novalidate
+            aria-label="お問い合わせフォーム"
+          >
+            <div class="contact__row">
+              <div class="contact__field">
+                <label class="contact__label" for="name"
+                  >お名前 <sup>*</sup></label
+                >
+                <input
+                  class="contact__input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                  placeholder="山田 太郎"
+                />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="email"
+                  >メールアドレス <sup>*</sup></label
+                >
+                <input
+                  class="contact__input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  placeholder="example@email.com"
+                />
+              </div>
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="subject">件名</label>
+              <input
+                class="contact__input"
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="お問い合わせの件名"
+              />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="message"
+                >メッセージ <sup>*</sup></label
+              >
+              <textarea
+                class="contact__textarea"
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="お気軽にメッセージをどうぞ"
+              ></textarea>
+            </div>
+            <div class="contact__submit">
+              <button type="submit" class="btn btn--filled">送信する</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <p class="footer__logo">CLUB<span>.</span>HOUSE</p>
+            <p class="footer__tagline">Your everyday clubhouse.</p>
+          </div>
+          <nav class="footer__nav" aria-label="フッターナビゲーション">
+            <ul class="footer__nav-list" role="list">
+              <li><a href="#about" class="footer__nav-link">About</a></li>
+              <li><a href="#menu" class="footer__nav-link">Menu</a></li>
+              <li><a href="#instagram" class="footer__nav-link">Instagram</a></li>
+              <li><a href="#shop" class="footer__nav-link">Shop</a></li>
+              <li><a href="#access" class="footer__nav-link">Access</a></li>
+              <li><a href="#contact" class="footer__nav-link">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="footer__social">
+            <a
+              href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu"
+              class="footer__social-link"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/"
+              class="footer__social-link"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://line.me/"
+              class="footer__social-link"
+              aria-label="LINE"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-line" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; 2026 CLUBHOUSE. All rights reserved.
+          </p>
+          <a href="#top" class="footer__back-top" aria-label="ページ上部へ">
+            <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const header = document.querySelector(".header");
+        const hamburger = document.getElementById("hamburger");
+        const navList = document.getElementById("navList");
+        const navLinks = document.querySelectorAll(".nav__link");
+        const fadeEls = document.querySelectorAll(".fade-in");
+        const form = document.getElementById("contactForm");
+
+        /* ---------- Header scroll ---------- */
+        function onScroll() {
+          header.classList.toggle("scrolled", window.scrollY > 60);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        /* ---------- Hamburger ---------- */
+        function openMenu() {
+          navList.classList.add("open");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          navList.classList.remove("open");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", function () {
+          navList.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+        navLinks.forEach(function (l) {
+          l.addEventListener("click", closeMenu);
+        });
+        document.addEventListener("click", function (e) {
+          if (
+            navList.classList.contains("open") &&
+            !navList.contains(e.target) &&
+            !hamburger.contains(e.target)
+          )
+            closeMenu();
+        });
+
+        /* ---------- Fade-in ---------- */
+        if ("IntersectionObserver" in window) {
+          var obs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add("visible");
+                  obs.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+          );
+          fadeEls.forEach(function (el) {
+            obs.observe(el);
+          });
+        } else {
+          fadeEls.forEach(function (el) {
+            el.classList.add("visible");
+          });
+        }
+
+        /* ---------- Scrollspy ---------- */
+        var sections = document.querySelectorAll("section[id]");
+        function scrollspy() {
+          var cur = "";
+          sections.forEach(function (s) {
+            if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+          });
+          navLinks.forEach(function (l) {
+            l.classList.toggle("active", l.getAttribute("href") === "#" + cur);
+          });
+        }
+        window.addEventListener("scroll", scrollspy, { passive: true });
+
+        /* ---------- Smooth scroll ---------- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            var id = this.getAttribute("href");
+            if (id === "#" || id === "#top") return;
+            var target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            window.scrollTo({
+              top: target.offsetTop - header.offsetHeight,
+              behavior: "smooth",
+            });
+            if (history.pushState) history.pushState(null, null, id);
+          });
+        });
+
+        /* ---------- Contact form ---------- */
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var required = form.querySelectorAll("[required]");
+            var ok = true;
+            required.forEach(function (f) {
+              if (!f.value.trim()) {
+                f.classList.add("error");
+                ok = false;
+              } else f.classList.remove("error");
+            });
+            if (!ok) return;
+            var btn = form.querySelector('[type="submit"]');
+            btn.textContent = "送信中...";
+            btn.disabled = true;
+            setTimeout(function () {
+              form.innerHTML =
+                '<div class="contact__success" role="alert"><p>お問い合わせありがとうございます。<em>Thank you — we\'ll be in touch soon.</em></p></div>';
+            }, 800);
+          });
+          form.addEventListener("input", function (e) {
+            e.target.classList.remove("error");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
