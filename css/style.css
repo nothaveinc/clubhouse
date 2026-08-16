@@ -325,7 +325,7 @@ section[id] {
 
 @media (max-width: 768px) {
   .hero__img {
-    object-position: 75% center;
+    object-position: 75% 20% center;
   }
 }
 .hero__overlay {
@@ -566,41 +566,12 @@ section[id] {
   color: var(--brown-mid);
 }
 
-/* ===== 11. PILLARS ===== */
-.pillars__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+/* 「3つのこだわり」セクション削除に伴う about → menu 間の余白調整 */
+.about.section {
+  padding-block-end: 3rem;
 }
-.pillar {
-  background: var(--white);
-  border: 1px solid var(--border);
-  padding: 2.2rem 2rem;
-  text-align: center;
-  transition:
-    box-shadow var(--ease),
-    transform var(--ease);
-}
-.pillar:hover {
-  box-shadow: 0 8px 32px rgba(44, 32, 16, 0.08);
-  transform: translateY(-4px);
-}
-.pillar__icon {
-  font-size: 2rem;
-  color: var(--yellow-dark);
-  margin-bottom: 1rem;
-}
-.pillar__title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--brown);
-  margin-bottom: 0.7rem;
-}
-.pillar__desc {
-  font-size: 0.87rem;
-  color: var(--text-light);
-  line-height: 1.9;
+.menu.section {
+  padding-block-start: 3rem;
 }
 
 /* ===== 12. MENU ===== */
@@ -1010,11 +981,6 @@ section[id] {
 
   /* Menu */
   .menu__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Pillars */
-  .pillars__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
