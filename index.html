@@ -85,9 +85,107 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="css/ch-loader.css" />
+    <script>
+      /* ローダーはセッション初回のみ。描画前に判定して再訪時のちらつきを防ぐ */
+      (function () {
+        var d = document.documentElement;
+        try {
+          if (sessionStorage.getItem("chLoaderShown")) return;
+          sessionStorage.setItem("chLoaderShown", "1");
+        } catch (e) {}
+        d.className += " ch-loading ch-locked";
+        /* js/ch-loader.js が読めなかった場合でもページを操作可能にする保険 */
+        window.__chLoaderFailsafe = setTimeout(function () {
+          d.classList.remove("ch-locked");
+          d.classList.remove("ch-loading");
+          var n = document.getElementById("chLoader");
+          if (n && n.parentNode) n.parentNode.removeChild(n);
+          document.dispatchEvent(new CustomEvent("ch-loader:done"));
+        }, 12000);
+      })();
+    </script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div
+      class="ch-loader"
+      id="chLoader"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="1"
+      aria-valuetext="1%"
+      aria-label="ページを読み込み中"
+      aria-busy="true"
+    >
+      <!-- スクリーンリーダーには role="progressbar" の値で伝わるので視覚のみ -->
+      <p class="ch-loader__pct" id="chPct" aria-hidden="true">1%</p>
+
+      <svg
+        class="ch-loader__art"
+        id="chArt"
+        viewBox="0 0 1000 1000"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <defs>
+          <!-- コーヒーはこの円の内側にだけ描かれる。
+               半径は make_logo_line.py がロゴから実測した値。 -->
+          <clipPath id="chLoaderClip">
+            <ellipse id="chClipShape" cx="501.2" cy="500.6" rx="446.6" ry="462" />
+          </clipPath>
+          <!-- カラー版を下から拭き上げるための波形マスク。
+               d は空で開始するため、JSが動く前はマスクが全黒＝カラー非表示 -->
+          <mask
+            id="chColorMask"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="-200"
+            width="1000"
+            height="1400"
+          >
+            <g id="chColorMaskWave" transform="translate(0,1000)">
+              <path id="chColorWave" fill="#ffffff" d="" />
+            </g>
+          </mask>
+        </defs>
+
+        <!-- ① コーヒー（円の内側にクリップ） -->
+        <g clip-path="url(#chLoaderClip)">
+          <!-- 進捗に応じて Y 方向に移動するグループ。初期値 = 1% 相当 -->
+          <g id="chLiquid" transform="translate(0,953.4)">
+            <path class="ch-loader__liquid" id="chWaveA" d="" />
+            <g id="chFoam"></g>
+          </g>
+          <g id="chRipples"></g>
+        </g>
+
+        <!-- ③ ロゴ線画（常に最前面・不透明 → 線と文字は必ず視認できる） -->
+        <image
+          id="chLogo"
+          href="./images/logo-line.webp"
+          x="0"
+          y="0"
+          width="1000"
+          height="1000"
+        />
+
+        <!-- ④ カラー版ロゴ。100% 到達時に波形マスクで下から拭き上げる -->
+        <g id="chColorLayer" mask="url(#chColorMask)" opacity="0">
+          <image
+            id="chLogoColor"
+            href="./images/logo-color.webp"
+            x="0"
+            y="0"
+            width="1000"
+            height="1000"
+          />
+        </g>
+      </svg>
+
+    </div>
+    <script src="js/ch-loader.js"></script>
     <!-- HEADER -->
     <header class="header" id="top">
       <nav class="nav" aria-label="メインナビゲーション">
@@ -283,105 +381,6 @@
             <p class="desc">最新の投稿はInstagramでチェック。</p>
           </div>
           <div class="insta-feed" role="list" aria-label="Instagram最新投稿">
-            <a
-              href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu"
-              class="insta-post fade-in"
-              role="listitem"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="2026年6月8日のInstagram投稿を見る"
-            >
-              <div class="insta-post__img-wrap">
-                <img
-                  src="./images/clubhouse%20photo/616656046848737707.jpg"
-                  alt="コーヒーを一杯ずつ丁寧に淹れるクラブハウスの様子"
-                  class="insta-post__img"
-                  loading="lazy"
-                />
-                <div class="insta-post__overlay" aria-hidden="true">
-                  <span class="insta-post__stat"
-                    ><i class="fa-solid fa-heart"></i> 84</span
-                  >
-                  <span class="insta-post__stat"
-                    ><i class="fa-regular fa-comment"></i> 7</span
-                  >
-                </div>
-              </div>
-              <p class="insta-post__caption">
-                今日も丁寧に一杯ずつ。豆の香りに癒される朝です☕ #clubhouse
-                #福津カフェ #コーヒー
-              </p>
-              <time class="insta-post__date" datetime="2026-06-08"
-                >2026.06.08</time
-              >
-            </a>
-
-            <a
-              href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu"
-              class="insta-post fade-in"
-              role="listitem"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="2026年6月6日のInstagram投稿を見る"
-            >
-              <div class="insta-post__img-wrap">
-                <img
-                  src="./images/clubhouse%20photo/616656048996745732.jpg"
-                  alt="津屋崎いちごのタルト"
-                  class="insta-post__img"
-                  loading="lazy"
-                />
-                <div class="insta-post__overlay" aria-hidden="true">
-                  <span class="insta-post__stat"
-                    ><i class="fa-solid fa-heart"></i> 121</span
-                  >
-                  <span class="insta-post__stat"
-                    ><i class="fa-regular fa-comment"></i> 12</span
-                  >
-                </div>
-              </div>
-              <p class="insta-post__caption">
-                今週の季節のケーキは津屋崎いちごのタルトです🍓
-                数量限定なのでお早めに！
-              </p>
-              <time class="insta-post__date" datetime="2026-06-06"
-                >2026.06.06</time
-              >
-            </a>
-
-            <a
-              href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu"
-              class="insta-post fade-in"
-              role="listitem"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="2026年6月4日のInstagram投稿を見る"
-            >
-              <div class="insta-post__img-wrap">
-                <img
-                  src="./images/clubhouse%20photo/616656049415389339.jpg"
-                  alt="地元野菜を使ったクラブハウスカレー"
-                  class="insta-post__img"
-                  loading="lazy"
-                />
-                <div class="insta-post__overlay" aria-hidden="true">
-                  <span class="insta-post__stat"
-                    ><i class="fa-solid fa-heart"></i> 96</span
-                  >
-                  <span class="insta-post__stat"
-                    ><i class="fa-regular fa-comment"></i> 9</span
-                  >
-                </div>
-              </div>
-              <p class="insta-post__caption">
-                ランチのクラブハウスカレー、好評です🍛
-                地元野菜がたっぷり入ってます。#福津グルメ
-              </p>
-              <time class="insta-post__date" datetime="2026-06-04"
-                >2026.06.04</time
-              >
-            </a>
-
             <a
               href="https://www.instagram.com/club_house_fukutsu?igsh=dDk0MThzMGxzbXJu"
               class="insta-post fade-in"
@@ -765,9 +764,18 @@
             },
             { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
           );
-          fadeEls.forEach(function (el) {
-            obs.observe(el);
-          });
+          function observeFadeEls() {
+            fadeEls.forEach(function (el) {
+              obs.observe(el);
+            });
+          }
+          if (document.documentElement.classList.contains("ch-loading")) {
+            document.addEventListener("ch-loader:done", observeFadeEls, {
+              once: true,
+            });
+          } else {
+            observeFadeEls();
+          }
         } else {
           fadeEls.forEach(function (el) {
             el.classList.add("visible");

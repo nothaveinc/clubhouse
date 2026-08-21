@@ -1,0 +1,78 @@
+/* Clubhouse production loading animation styles.
+ * Load this file in index.html <head>, before css/style.css.
+ * Visibility is controlled by html.ch-loading.
+ * Scroll/animation lock is controlled by html.ch-locked (released earlier).
+ */
+
+.ch-loader {
+  display: none;
+}
+
+html.ch-loading .ch-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vmin, 1.75rem);
+  background: var(--ch-loader-bg, #fdfcfa);
+  /* rAF で opacity を直接操作するため transition は使わない
+     （既存 style.css の reduced-motion が全 transition を潰すため） */
+  will-change: opacity;
+}
+
+.ch-loader__art {
+  display: block;
+  width: min(62vmin, 440px);
+  /* viewBox と同じ比率。縦横比を固定してレイアウトずれを防ぐ */
+  aspect-ratio: 1 / 1;
+  height: auto;
+  overflow: visible;
+}
+
+.ch-loader__pct {
+  margin: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(1.02rem, 3.12vmin, 1.26rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  /* 桁数が変わっても幅が揺れないように */
+  font-variant-numeric: tabular-nums;
+  color: #6b5038;
+}
+
+/* 液体・注ぎ・泡の色。1 箇所で調整できるよう変数に切り出す。
+   黒線画とのコントラスト比が 3:1 を下回らない範囲で調整すること。
+   現状 rgba(74,42,20,.75) → 合成後 #775F4E ≒ 3.5:1 */
+.ch-loader__liquid {
+  fill: rgba(74, 42, 20, 0.75);
+}
+.ch-loader__foam {
+  fill: rgba(255, 252, 246, 0.5);
+}
+.ch-loader__ripple {
+  fill: none;
+  stroke: rgba(255, 252, 246, 0.55);
+  stroke-width: 2;
+}
+
+
+/* 操作のロックは ch-loading（＝ローダーの可視性）とは別クラスで持つ。
+   ch-loading を先に外すと .ch-loader の display 指定が 1 フレーム失われて
+   全画面が露出するため、フェード開始時に外せるのはこちらだけ。 */
+html.ch-locked,
+html.ch-locked body {
+  overflow: hidden;
+}
+
+/* ロック中はヒーローの入場アニメを止め、フェード開始と同時に再生させる。
+   ローダーが薄くなっていく裏でヒーローが動き出す。 */
+html.ch-locked .hero__eyebrow,
+html.ch-locked .hero__title,
+html.ch-locked .hero__sub,
+html.ch-locked .hero__ctas,
+html.ch-locked .hero__scroll {
+  animation-play-state: paused;
+}

@@ -1,6 +1,11 @@
 .DS_Store
-*.png
 *.pdf
 *.py
 *.avif
 clubhouse_map*.svg
+
+# 公開サイトで使わない画像のみ個別に除外する。
+# （以前は *.png で一括除外していたため、メニュー画像が公開サイトで404になっていた）
+images/Gemini_Generated_Image_*.png
+images/clubhouse photo.png
+images/clubhouse_logo_color.png
