@@ -149,6 +149,20 @@
               <path id="chColorWave" fill="#ffffff" d="" />
             </g>
           </mask>
+          <!-- 星をにじませて「きらっ」と見せるためのぼかし -->
+          <filter
+            id="chStarGlow"
+            x="-40%"
+            y="-40%"
+            width="180%"
+            height="180%"
+          >
+            <feGaussianBlur stdDeviation="7" result="chStarBlur" />
+            <feMerge>
+              <feMergeNode in="chStarBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
 
         <!-- ① コーヒー（円の内側にクリップ） -->
@@ -184,6 +198,11 @@
             height="1000"
           />
         </g>
+
+        <!-- ⑤ きらっ。カラーが揃う頃、ロゴに描かれた星の位置で瞬く。
+             星そのものは js/ch-loader.js が組み立てる
+             （reduced-motion では 1 つも作らない） -->
+        <g id="chSparkle" clip-path="url(#chLoaderClip)" opacity="0"></g>
       </svg>
 
     </div>

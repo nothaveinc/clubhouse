@@ -20,13 +20,28 @@
     width: 2000 // viewBox 幅 + ループ幅
   };
 
-  var HOLD_MS = 800; // 100% を保持する時間
-  var COLOR_MS = 650; // カラーへ切り替わる時間（HOLD_MS=800 の内側に収める）
-  var FADE_MS = 2000; // フェードアウト時間
+  var HOLD_MS = 600; // 100% を保持する時間
+  var COLOR_MS = 450; // カラーへ切り替わる時間（HOLD_MS の内側に収める）
+  var FADE_MS = 700; // フェードアウト時間
   var SIM_MAX = 90; // 実進捗が取れない場合に自走する上限
-  var HARD_TIMEOUT_MS = 8000; // 読み込みが詰まっても必ず終わらせる
-  var MIN_FILL_MS = 3000; // 1% → 100% にかける最短時間（回線が速くてもこれ未満にしない）
+  var HARD_TIMEOUT_MS = 5000; // 読み込みが詰まっても必ず終わらせる
+  var MIN_FILL_MS = 1800; // 1% → 100% にかける最短時間（回線が速くてもこれ未満にしない）
   var TAPER_SPAN = 6; // 残りこの%を切ったら波を収束させ、満杯時の隙間を無くす
+
+  /* ---------- カラー到達時の「きらっ」 ----------
+     ロゴに元から描かれているキラキラの実測座標（viewBox 1000 空間）。
+     同じ位置で瞬かせることで、描かれた星が光ったように見せる。 */
+  var STARS = [
+    { x: 156, y: 447, r: 46, delay: 0.0 },
+    { x: 838, y: 437, r: 42, delay: 0.14 },
+    { x: 276, y: 527, r: 32, delay: 0.28 }
+  ];
+  // 中心を原点にした4方向の星。scale() で大きさを与える
+  var STAR_D =
+    "M0 -1 C .12 -.32 .32 -.12 1 0 C .32 .12 .12 .32 0 1 " +
+    "C -.12 .32 -.32 .12 -1 0 C -.32 -.12 -.12 -.32 0 -1 Z";
+  var SPARKLE_DELAY = 200; // 拭き上げ開始から瞬き始めるまで
+  var SPARKLE_MS = 380; // 瞬きの長さ。DELAY と合わせて HOLD_MS の内側に収める
 
   var root = document.getElementById("chLoader");
   if (!root) return;
@@ -48,7 +63,8 @@
     logo: document.getElementById("chLogo"),
     colorLayer: document.getElementById("chColorLayer"),
     colorMaskWave: document.getElementById("chColorMaskWave"),
-    colorWave: document.getElementById("chColorWave")
+    colorWave: document.getElementById("chColorWave"),
+    sparkle: document.getElementById("chSparkle")
   };
 
   var SVG_NS = "http://www.w3.org/2000/svg";
@@ -114,6 +130,28 @@
     f.life = startLife * f.dur;
   }
 
+  /* ---------- カラー到達時に瞬く星 ---------- */
+  var starEls = [];
+  function buildSparkle() {
+    els.sparkle.innerHTML = "";
+    starEls = [];
+    // reduced-motion では 1 つも作らない
+    if (reduce) return;
+    for (var i = 0; i < STARS.length; i++) {
+      var g = document.createElementNS(SVG_NS, "g");
+      g.setAttribute("opacity", "0");
+      var path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", STAR_D);
+      path.setAttribute("class", "ch-loader__star");
+      // 半径ぶん拡大してから、親グループで位置と瞬きを与える
+      path.setAttribute("transform", "scale(" + STARS[i].r + ")");
+      path.setAttribute("filter", "url(#chStarGlow)");
+      g.appendChild(path);
+      els.sparkle.appendChild(g);
+      starEls.push(g);
+    }
+  }
+
   /* ---------- 注ぎ口の波紋 ---------- */
   var ripples = [];
   function spawnRipple(y) {
@@ -137,6 +175,7 @@
   var lastAmpScale = 1; // 直近に適用した波の振幅倍率
   var rafId = null;
   var holdTimer = null;
+  var sparkleTimer = null;
 
   /* ---------- 描画（% と液面を同じ値から導出する） ---------- */
   function render() {
@@ -256,6 +295,7 @@
       els.colorMaskWave.setAttribute("transform", "translate(0," + to + ")");
       return;
     }
+    sparkleTimer = setTimeout(sparkle, SPARKLE_DELAY);
     var t0 = null;
     function step(now) {
       if (t0 === null) t0 = now;
@@ -267,6 +307,38 @@
         "translate(" + (-e * 260).toFixed(2) + "," + y.toFixed(2) + ")"
       );
       if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* 星を順にふくらませて消す。拭き上げの終盤に重ねることで
+     「色が揃った瞬間に光った」ように見せる。 */
+  function sparkle() {
+    if (reduce || !starEls.length) return;
+    els.sparkle.setAttribute("opacity", "1");
+    var t0 = null;
+    function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min((now - t0) / SPARKLE_MS, 1);
+      for (var i = 0; i < starEls.length; i++) {
+        var s = STARS[i];
+        // 星ごとに遅れて始まり、終わりは揃える
+        var q = (p - s.delay) / (1 - s.delay);
+        if (q <= 0 || q >= 1) {
+          starEls[i].setAttribute("opacity", "0");
+          continue;
+        }
+        var e = Math.sin(q * Math.PI); // 出て消えるまでの山
+        starEls[i].setAttribute("opacity", e.toFixed(3));
+        starEls[i].setAttribute(
+          "transform",
+          "translate(" + s.x + "," + s.y + ") " +
+            "scale(" + (0.35 + e * 0.85).toFixed(3) + ") " +
+            "rotate(" + (q * 40).toFixed(1) + ")"
+        );
+      }
+      if (p < 1) requestAnimationFrame(step);
+      else els.sparkle.setAttribute("opacity", "0");
     }
     requestAnimationFrame(step);
   }
@@ -297,7 +369,9 @@
   function destroy() {
     if (rafId) cancelAnimationFrame(rafId);
     if (holdTimer) clearTimeout(holdTimer);
+    if (sparkleTimer) clearTimeout(sparkleTimer);
     rafId = null;
+    sparkleTimer = null;
     /* 先にノードを外す。クラスを先に外すと 1 フレームだけ
        display 指定が失われて全画面が露出する */
     if (root.parentNode) root.parentNode.removeChild(root);
@@ -321,6 +395,7 @@
     els.clip.setAttribute("ry", GEOM.ry);
     buildWaves();
     buildFoam();
+    buildSparkle();
     render();
     startedAt = performance.now();
     lastT = 0;

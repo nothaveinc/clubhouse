@@ -57,6 +57,11 @@ html.ch-loading .ch-loader {
   stroke: rgba(255, 252, 246, 0.55);
   stroke-width: 2;
 }
+/* カラー到達時に瞬く星。ロゴに描かれたキラキラと同系の琥珀色。
+   淡い白だとクリーム地のロゴに埋もれて見えない */
+.ch-loader__star {
+  fill: #f6a71e;
+}
 
 
 /* 操作のロックは ch-loading（＝ローダーの可視性）とは別クラスで持つ。
