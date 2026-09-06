@@ -964,6 +964,69 @@ section[id] {
   color: var(--yellow);
 }
 
+/* ===== 17-B. PAGE TOP ===== */
+.pagetop {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 6px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 12px rgba(44, 32, 16, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity var(--ease),
+    transform var(--ease),
+    border-color var(--ease),
+    background var(--ease);
+}
+.pagetop.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.pagetop__logo {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+.pagetop__label {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  line-height: 1;
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .pagetop:hover {
+    border-color: var(--yellow-dark);
+    background: var(--white);
+    transform: translateY(-2px);
+  }
+  .pagetop:hover .pagetop__label {
+    color: var(--brown);
+  }
+}
+.pagetop:active {
+  transform: translateY(0) scale(0.96);
+}
+html.ch-loading .pagetop {
+  display: none;
+}
+
 /* ===== 18. RESPONSIVE — Tablet 768px+ ===== */
 @media (min-width: 768px) {
   :root {
@@ -1114,6 +1177,19 @@ section[id] {
 
   .footer__back-top {
     display: none;
+  }
+
+  .pagetop {
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    padding: 6px 5px;
+  }
+  .pagetop__logo {
+    width: 44px;
+    height: 44px;
+  }
+  .pagetop__label {
+    font-size: 0.5rem;
   }
 }
 

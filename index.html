@@ -723,6 +723,19 @@
       </div>
     </footer>
 
+    <a href="#top" class="pagetop" id="pageTop" aria-label="ページ上部へ戻る">
+      <img
+        class="pagetop__logo"
+        src="images/logo-color-smile.webp"
+        alt=""
+        aria-hidden="true"
+        width="56"
+        height="56"
+        decoding="async"
+      />
+      <span class="pagetop__label">page top</span>
+    </a>
+
     <script>
       (function () {
         "use strict";
@@ -855,6 +868,48 @@
           });
           form.addEventListener("input", function (e) {
             e.target.classList.remove("error");
+          });
+        }
+
+        /* ---------- Page top ---------- */
+        const pageTop = document.getElementById("pageTop");
+        if (pageTop) {
+          var pageTopThreshold = 0;
+
+          function measurePageTop() {
+            var hero = document.getElementById("hero");
+            pageTopThreshold =
+              (hero ? hero.offsetHeight : window.innerHeight) * 0.5;
+          }
+
+          function togglePageTop() {
+            pageTop.classList.toggle(
+              "is-visible",
+              window.scrollY > pageTopThreshold,
+            );
+          }
+
+          measurePageTop();
+          window.addEventListener(
+            "resize",
+            function () {
+              measurePageTop();
+              togglePageTop();
+            },
+            { passive: true },
+          );
+          window.addEventListener("scroll", togglePageTop, { passive: true });
+          togglePageTop();
+
+          pageTop.addEventListener("click", function (e) {
+            e.preventDefault();
+            var reduceMotion = window.matchMedia(
+              "(prefers-reduced-motion: reduce)",
+            ).matches;
+            window.scrollTo({
+              top: 0,
+              behavior: reduceMotion ? "instant" : "smooth",
+            });
           });
         }
       })();
