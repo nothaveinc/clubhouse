@@ -990,8 +990,8 @@ section[id] {
   pointer-events: auto;
 }
 .pagetop__logo {
-  width: 62px;
-  height: 62px;
+  width: 74px;
+  height: 74px;
   display: block;
 }
 .pagetop__label {
@@ -1175,8 +1175,8 @@ html.ch-loading .pagetop {
     bottom: calc(1rem + env(safe-area-inset-bottom));
   }
   .pagetop__logo {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
   }
   .pagetop__label {
     font-size: 0.5rem;
