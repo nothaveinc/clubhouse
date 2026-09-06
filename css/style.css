@@ -974,21 +974,14 @@ section[id] {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 8px 6px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 12px rgba(44, 32, 16, 0.08);
+  padding: 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
   pointer-events: none;
   transition:
     opacity var(--ease),
-    transform var(--ease),
-    border-color var(--ease),
-    background var(--ease);
+    transform var(--ease);
 }
 .pagetop.is-visible {
   opacity: 1;
@@ -997,8 +990,8 @@ section[id] {
   pointer-events: auto;
 }
 .pagetop__logo {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   display: block;
 }
 .pagetop__label {
@@ -1012,8 +1005,6 @@ section[id] {
 }
 @media (hover: hover) {
   .pagetop:hover {
-    border-color: var(--yellow-dark);
-    background: var(--white);
     transform: translateY(-2px);
   }
   .pagetop:hover .pagetop__label {
@@ -1182,11 +1173,10 @@ html.ch-loading .pagetop {
   .pagetop {
     right: 1rem;
     bottom: calc(1rem + env(safe-area-inset-bottom));
-    padding: 6px 5px;
   }
   .pagetop__logo {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
   }
   .pagetop__label {
     font-size: 0.5rem;
