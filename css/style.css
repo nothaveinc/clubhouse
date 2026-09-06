@@ -205,8 +205,6 @@ section[id] {
   z-index: 100;
   height: var(--header-h);
   background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition:
     border-color var(--ease),
@@ -278,6 +276,8 @@ section[id] {
 /* Hamburger */
 .nav__hamburger {
   display: none;
+  position: relative;
+  z-index: 100;
   flex-direction: column;
   justify-content: space-between;
   width: 24px;
