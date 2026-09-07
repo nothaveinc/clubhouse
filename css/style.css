@@ -334,8 +334,12 @@ section[id] {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    height: 78svh;
+    min-height: 540px;
+  }
   .hero__img {
-    object-position: 75% 20% center;
+    object-position: 80% center;
   }
 }
 .hero__overlay {
