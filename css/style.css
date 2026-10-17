@@ -795,83 +795,6 @@ section[id] {
   display: block;
 }
 
-/* ===== 16. CONTACT ===== */
-.contact__form {
-  max-width: 680px;
-  margin-inline: auto;
-}
-.contact__row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-.contact__field {
-  margin-bottom: 1.1rem;
-}
-.contact__label {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--brown-mid);
-  margin-bottom: 0.45rem;
-}
-.contact__label sup {
-  color: var(--yellow-dark);
-}
-.contact__input,
-.contact__textarea {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--border);
-  background: var(--white);
-  font-family: var(--font-serif);
-  font-size: 0.9rem;
-  color: var(--text);
-  transition: border-color var(--ease);
-  appearance: none;
-  -webkit-appearance: none;
-}
-.contact__input::placeholder,
-.contact__textarea::placeholder {
-  color: var(--text-light);
-}
-.contact__input:focus,
-.contact__textarea:focus {
-  outline: none;
-  border-color: var(--yellow-dark);
-}
-.contact__input.error,
-.contact__textarea.error {
-  border-color: #c0392b;
-}
-.contact__textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-.contact__submit {
-  text-align: center;
-  margin-top: 1.8rem;
-}
-.contact__success {
-  text-align: center;
-  padding: 3rem;
-}
-.contact__success p {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--brown);
-}
-.contact__success em {
-  display: block;
-  font-style: italic;
-  color: var(--yellow-dark);
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-
 /* ===== 17. FOOTER ===== */
 .footer {
   background: var(--brown);
@@ -1059,11 +982,6 @@ html.ch-loading .pagetop {
   }
   .shop__img {
     height: 480px;
-  }
-
-  /* Contact */
-  .contact__row {
-    grid-template-columns: 1fr 1fr;
   }
 
   /* Footer */

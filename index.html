@@ -229,7 +229,6 @@
           <li><a href="#instagram" class="nav__link">Instagram</a></li>
           <li><a href="#shop" class="nav__link">Shop</a></li>
           <li><a href="#access" class="nav__link">Access</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
         </ul>
         <button
           class="nav__hamburger"
@@ -598,80 +597,6 @@
           </div>
         </div>
       </section>
-
-      <!-- CONTACT -->
-      <section class="section" id="contact" aria-labelledby="contact-h">
-        <div class="container">
-          <div class="section-header fade-in">
-            <span class="label">Contact</span>
-            <h2 class="heading" id="contact-h">お問い合わせ</h2>
-            <p class="desc">ご質問・ご予約はお気軽にどうぞ。</p>
-          </div>
-          <form
-            class="contact__form fade-in"
-            id="contactForm"
-            novalidate
-            aria-label="お問い合わせフォーム"
-          >
-            <div class="contact__row">
-              <div class="contact__field">
-                <label class="contact__label" for="name"
-                  >お名前 <sup>*</sup></label
-                >
-                <input
-                  class="contact__input"
-                  type="text"
-                  id="name"
-                  name="name"
-                  autocomplete="name"
-                  required
-                  placeholder="山田 太郎"
-                />
-              </div>
-              <div class="contact__field">
-                <label class="contact__label" for="email"
-                  >メールアドレス <sup>*</sup></label
-                >
-                <input
-                  class="contact__input"
-                  type="email"
-                  id="email"
-                  name="email"
-                  autocomplete="email"
-                  required
-                  placeholder="example@email.com"
-                />
-              </div>
-            </div>
-            <div class="contact__field">
-              <label class="contact__label" for="subject">件名</label>
-              <input
-                class="contact__input"
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="お問い合わせの件名"
-              />
-            </div>
-            <div class="contact__field">
-              <label class="contact__label" for="message"
-                >メッセージ <sup>*</sup></label
-              >
-              <textarea
-                class="contact__textarea"
-                id="message"
-                name="message"
-                rows="6"
-                required
-                placeholder="お気軽にメッセージをどうぞ"
-              ></textarea>
-            </div>
-            <div class="contact__submit">
-              <button type="submit" class="btn btn--filled">送信する</button>
-            </div>
-          </form>
-        </div>
-      </section>
     </main>
 
     <!-- FOOTER -->
@@ -691,7 +616,6 @@
               </li>
               <li><a href="#shop" class="footer__nav-link">Shop</a></li>
               <li><a href="#access" class="footer__nav-link">Access</a></li>
-              <li><a href="#contact" class="footer__nav-link">Contact</a></li>
             </ul>
           </nav>
           <div class="footer__social">
@@ -757,7 +681,6 @@
         const navList = document.getElementById("navList");
         const navLinks = document.querySelectorAll(".nav__link");
         const fadeEls = document.querySelectorAll(".fade-in");
-        const form = document.getElementById("contactForm");
 
         /* ---------- Header scroll ---------- */
         function onScroll() {
@@ -856,32 +779,6 @@
             if (history.pushState) history.pushState(null, null, id);
           });
         });
-
-        /* ---------- Contact form ---------- */
-        if (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            var required = form.querySelectorAll("[required]");
-            var ok = true;
-            required.forEach(function (f) {
-              if (!f.value.trim()) {
-                f.classList.add("error");
-                ok = false;
-              } else f.classList.remove("error");
-            });
-            if (!ok) return;
-            var btn = form.querySelector('[type="submit"]');
-            btn.textContent = "送信中...";
-            btn.disabled = true;
-            setTimeout(function () {
-              form.innerHTML =
-                '<div class="contact__success" role="alert"><p>お問い合わせありがとうございます。<em>Thank you — we\'ll be in touch soon.</em></p></div>';
-            }, 800);
-          });
-          form.addEventListener("input", function (e) {
-            e.target.classList.remove("error");
-          });
-        }
 
         /* ---------- Page top ---------- */
         const pageTop = document.getElementById("pageTop");
